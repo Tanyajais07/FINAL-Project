@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans text-gray-900 antialiased;
+    background-color: #f5f7fa;
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background-attachment: fixed;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full hover:bg-gray-400 transition-colors;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-2xl bg-white/50 backdrop-blur-lg shadow-glass border border-white/20;
+  }
+  
+  .glass-card-dark {
+    @apply rounded-2xl bg-gray-900/70 backdrop-blur-lg shadow-glass border border-white/10;
+  }
+
+  .weather-gradient-day {
+    background: linear-gradient(to top, #4facfe 0%, #00f2fe 100%);
+  }
+  
+  .weather-gradient-night {
+    background: linear-gradient(to top, #0c1445 0%, #281E5D 100%);
+  }
+  
+  .weather-gradient-rain {
+    background: linear-gradient(to top, #373B44 0%, #4286f4 100%);
+  }
+
+  .weather-gradient-cloudy {
+    background: linear-gradient(to top, #E6DADA 0%, #274046 100%);
+  }
+
+  .weather-gradient-snow {
+    background: linear-gradient(to top, #c9d6ff 0%, #e2e2e2 100%);
+  }
+  
+  .weather-gradient-dust {
+    background: linear-gradient(to top, #B79891 0%, #94716B 100%);
+  }
+}
+
+.animate-weather-icon {
+  animation: weatherIconFloat 3s ease-in-out infinite;
+}
+
+@keyframes weatherIconFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.temp-circle {
+  position: relative;
+}
+
+.temp-circle::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 110%;
+  height: 110%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
